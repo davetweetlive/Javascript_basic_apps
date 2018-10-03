@@ -6,7 +6,8 @@ const tweetList = document.getElementById('tweet-list');
 eventListeners();
 function eventListeners(){
     document.querySelector('#form').addEventListener('submit', newTweet);
-    tweetList.addEventListener('click', removeTweet)
+    tweetList.addEventListener('click', removeTweet);
+    document.addEventListener('DOMContentLoaded', localStorageOnLoad);
 }
 
 //Functions
@@ -51,4 +52,23 @@ function getTweetsFromStorage(){
         tweets = JSON.parse(tweetLS);
     }
     return tweets;
+}
+
+function localStorageOnLoad(){
+    let tweets = getTweetsFromStorage();
+
+    tweets.forEach(function(tweet){
+        let tweet = document.querySelector('#tweet').value;
+    let li = document.createElement('li');
+    li.textContent = tweet;
+    tweetList.appendChild(li);
+    
+    const removeBtn = document.createElement('a');
+    removeBtn.classList = 'remove-tweet';
+    removeBtn.textContent = 'X';
+    li.appendChild(removeBtn);
+
+    // addTweetToLocalStorage(tweet);
+    });
+
 }
