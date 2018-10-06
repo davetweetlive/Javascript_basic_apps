@@ -61,7 +61,6 @@ function addTweetToLocalStorage(tweet){
   tweets.push(tweet);
 
   localStorage.setItem('tweets', JSON.stringify(tweets));
-  console.log(tweets);
 }
 
 
@@ -115,6 +114,4 @@ function removeTweetFromLocalStorage(tweet){
 
   //Save the rest data
   localStorage.setItem('tweets', JSON.stringify(tweets));
-
-  console.log(tweetDelete);
 }
