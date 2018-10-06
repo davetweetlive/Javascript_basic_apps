@@ -1,13 +1,16 @@
                                 // Variable declaration which contains all global variables
+             /********************************************************************************************/
 
 const courses = document.querySelector('#courses-list'),
       shoppingCartContent = document.querySelector('#cart-content tbody'),
-      clearCartBtn = document.querySelector('#clear-cart')
+      clearCartBtn = document.querySelector('#clear-cart');
 
 
 
 
-                                // Event Listeners for all the events are specified in this sections
+                                // eventListeners for all the events are specified in this sections
+                  /********************************************************************************************/
+
 loadEventListeners();
 function loadEventListeners(){
     //Add to cart
@@ -22,8 +25,11 @@ function loadEventListeners(){
 }
 
 
-                                // Function Declararions: all the functions called by eventslisteners and other functions
+                                // Function Declararions: all the functions called by eventslisteners 
+                                // and other functions
+                    /********************************************************************************************/
 
+//buy course function adds course to the cart and calls the function getCourseInfo() which takes data from html page
 function buyCourse(e){
     //Use delegation to add courses on clicking only on "Add to Cart" button only
     if(e.target.classList.contains('add-to-cart')){
@@ -111,13 +117,14 @@ function removeCourse(e){
 
 //Function removeCourseFromLocalStorage removes courses from local storage to if gets removed from cart
 function removeCourseFromLocalStorage(id){
+
     //Get localStorage Data
     let coursesLs = getCoursesFromStorage();
 
     //Loop through the array and find the index to remove
     coursesLs.forEach(function(coursesLs, index){
         if(coursesLs.id === id){
-            coursesLs.splice(index, 1)
+            coursesLs.splice(index, 1);
         }
     });
 
@@ -164,5 +171,4 @@ function getFromLocalStorage(){
         shoppingCartContent.appendChild(row);
 
     })
-
 }
